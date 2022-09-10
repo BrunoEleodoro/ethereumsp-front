@@ -80,12 +80,20 @@ export default function Home() {
             Agregador de NFTs
           </Text>{' '} Focado em artistas
         </h1>
-        { /*
-        <Text className={classes.description} color="dimmed">
-          Build fully functional accessible web applications with ease – Mantine includes more than
-          100 customizable components and hooks to cover you in any situation
-        </Text> */}
-
+        {
+          <Text className={classes.description} color="dimmed">
+            Com as artes digitais que voce ja tem hoje, voce sabia que ja pode criar NFTs!?
+          </Text>}
+        <Group className={classes.controls}>
+          <Button
+            size="xl"
+            className={classes.control}
+            variant="gradient"
+            gradient={{ from: 'blue', to: 'cyan' }}
+          >
+            Descubra como
+          </Button>
+        </Group>
       </Container>
       <Container>
 
