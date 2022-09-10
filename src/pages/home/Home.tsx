@@ -1,5 +1,6 @@
 import { createStyles, Container, Text, Button, Group } from '@mantine/core';
 import { GithubIcon } from '@mantine/ds';
+import TableComponent from '../../components/Table';
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -96,6 +97,36 @@ export default function Home() {
           </Button>
 
         </Group>
+      </Container>
+      <Container>
+
+        <TableComponent data={[
+          {
+            id: "abc",
+            avatar: 'https://webhaga.com/wp-content/uploads/2020/11/logo.png',
+            name: "Avalanche",
+            volume: '300 AVAX',
+            sells: '15k',
+            totalNfts: '200k'
+          },
+          {
+            id: "abc",
+            avatar: 'https://th.bing.com/th/id/OIP.ZZSxbwfHx0kf4TNqEDTJ3QHaHa?pid=ImgDet&rs=1',
+            name: "Ethereum",
+            volume: '100 ETH',
+            sells: '1k',
+            totalNfts: '200k'
+          },
+          {
+            id: "abc",
+            avatar: 'https://th.bing.com/th/id/OIP.lWCuHMxDTww1eILptWyOOAHaHa?pid=ImgDet&rs=1',
+            name: "Polygon",
+            volume: '300 MATIC',
+            sells: '15k',
+            totalNfts: '200k'
+          },
+        ]} />
+
       </Container>
     </div>
   );
