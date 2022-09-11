@@ -3,10 +3,12 @@ import { create as ipfsHttpClient } from 'ipfs-http-client';
 import { Buffer } from 'buffer';
 import { useEthers } from '@usedapp/core';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateNftContext = React.createContext<any>({})
 
 export default function CreateNftCtxProvider({ children }: { children: React.ReactNode }) {
+  const navigate = useNavigate();
 
   const projectId = '2EGb3tpj8rhOsQLf9EHAGRp3IJZ';   // <---------- your Infura Project ID
 
@@ -64,6 +66,7 @@ export default function CreateNftCtxProvider({ children }: { children: React.Rea
       uri: nftURIFinal,
     });
     console.log(apiResponse.data);
+    navigate('/minhas-nfts', { replace: true });
     setIsLoading(false);
   }
 

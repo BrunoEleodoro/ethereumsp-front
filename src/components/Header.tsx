@@ -86,7 +86,6 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
-
   const items = links.map((link) => (
     <a
       key={link.label}
@@ -95,6 +94,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       onClick={(event) => {
         event.preventDefault();
         setActive(link.link);
+        navigate(link.link);
         close();
       }}
     >
@@ -106,12 +106,12 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
         {/* <MantineLogo size={28} />*/}
-        <Group onClick={() => navigate(window.location.pathname + '/')}>
+        <Group onClick={() => navigate('/')}>
           <img src={logo} width="60" />
           &nbsp;NFT Art
         </Group>
         <Group spacing={5} className={classes.links}>
-          {/* items */}
+          {items}
         </Group>
         {account ?
           <Button

@@ -28,14 +28,14 @@ const useStyles = createStyles((theme) => ({
 
 export default function DetalhesNft() {
   // You can add these classes as classNames to any Mantine input, it will work the same
-  //
   const { account } = useEthers();
   const { classes } = useStyles();
   const { isLoading, setName, setDescription, salvarNft } = React.useContext(CreateNftContext);
 
-
   return (
     <div >
+      <TextInput style={{ width: '100%' }} value={account} label="Sua conta" disabled={true} placeholder="" classNames={classes} />
+      <br />
       <TextInput style={{ width: '100%' }} label="Titulo da NFT" placeholder="" classNames={classes} onChange={(e) => setName(e.target.value)} />
       <br />
       <Textarea style={{ width: '100%' }} label="Descrição da NFT" placeholder="" classNames={classes} onChange={(e) => setDescription(e.target.value)} />

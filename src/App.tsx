@@ -1,3 +1,4 @@
+import { useEthers } from "@usedapp/core";
 import React from "react";
 import {
   BrowserRouter,
@@ -11,15 +12,31 @@ import { CreateNFT } from "./pages/CreateNft";
 import Home from "./pages/home/Home";
 
 export default function App() {
+  const { account } = useEthers();
   return (
     <BrowserRouter>
       <div>
-        <HeaderResponsive links={[
+        <HeaderResponsive links={account ? [
+          {
+            link: '/create',
+            label: 'Criar NFT'
+          },
+          {
+            link: '/dashboard',
+            label: 'Dashboard'
+          },
+          {
+            link: '/minhas-nfts',
+            label: 'Minhas Nfts'
+          },
           {
             link: '/about',
             label: 'About'
-          }
-        ]} />
+          },
+        ] : [{
+          link: '/about',
+          label: 'About'
+        }]} />
       </div>
       <Routes>
         <Route path={process.env.PUBLIC_URL + "/"} element={<Home />} />
