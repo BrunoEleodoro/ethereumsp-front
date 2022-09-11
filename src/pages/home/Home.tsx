@@ -1,102 +1,122 @@
-import { createStyles, Container, Text, Button, Group } from '@mantine/core';
-import { GithubIcon } from '@mantine/ds';
+import {
+  createStyles,
+  Image,
+  Container,
+  Title,
+  Button,
+  Group,
+  Text,
+  List,
+  ThemeIcon,
+} from '@mantine/core';
+import { IconCheck } from '@tabler/icons';
+import { useNavigate } from 'react-router-dom';
 import TableComponent from '../../components/Table';
-
-const BREAKPOINT = '@media (max-width: 755px)';
+import image from './image.svg';
 
 const useStyles = createStyles((theme) => ({
-  wrapper: {
-    position: 'relative',
-    boxSizing: 'border-box',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+  inner: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingTop: theme.spacing.xl * 1,
+    paddingBottom: theme.spacing.xl * 4,
   },
 
-  inner: {
-    position: 'relative',
-    paddingTop: 0,
-    paddingBottom: 120,
+  content: {
+    maxWidth: 480,
+    marginRight: theme.spacing.xl * 3,
 
-    [BREAKPOINT]: {
-      paddingBottom: 80,
-      paddingTop: 80,
+    [theme.fn.smallerThan('md')]: {
+      maxWidth: '100%',
+      marginRight: 0,
     },
   },
 
   title: {
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: 62,
-    fontWeight: 900,
-    lineHeight: 1.1,
-    margin: 0,
-    padding: 0,
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontSize: 44,
+    lineHeight: 1.2,
+    fontWeight: 900,
 
-    [BREAKPOINT]: {
-      fontSize: 42,
-      lineHeight: 1.2,
-    },
-  },
-
-  description: {
-    marginTop: theme.spacing.sm,
-    fontSize: 24,
-
-    [BREAKPOINT]: {
-      fontSize: 18,
-    },
-  },
-
-  controls: {
-    marginTop: theme.spacing.xl * 2,
-
-    [BREAKPOINT]: {
-      marginTop: theme.spacing.xl,
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: 28,
     },
   },
 
   control: {
-    height: 54,
-    paddingLeft: 38,
-    paddingRight: 38,
-
-    [BREAKPOINT]: {
-      height: 54,
-      paddingLeft: 18,
-      paddingRight: 18,
+    [theme.fn.smallerThan('xs')]: {
       flex: 1,
     },
   },
+
+  image: {
+    flex: 1,
+
+    [theme.fn.smallerThan('md')]: {
+      display: 'none',
+    },
+  },
+
+  highlight: {
+    position: 'relative',
+    backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
+    borderRadius: theme.radius.sm,
+    padding: '4px 12px',
+  },
 }));
 
-export default function Home() {
+export default function HeroBullets() {
   const { classes } = useStyles();
-
+  const navigate = useNavigate();
   return (
-    <div className={classes.wrapper}>
-      <Container size={700} className={classes.inner}>
-        <h1 className={classes.title}>
-          O maior{' '}
-          <Text component="span" variant="gradient" gradient={{ from: 'blue', to: 'cyan' }} inherit>
-            Agregador de NFTs
-          </Text>{' '} Focado em artistas
-        </h1>
-        {
-          <Text className={classes.description} color="dimmed">
-            Com as artes digitais que voce ja tem hoje, voce sabia que ja pode criar NFTs!?
-          </Text>}
-        <Group className={classes.controls}>
-          <Button
-            size="xl"
-            className={classes.control}
-            variant="gradient"
-            gradient={{ from: 'blue', to: 'cyan' }}
-          >
-            Descubra como
-          </Button>
-        </Group>
+    <div>
+      <Container>
+        <div className={classes.inner}>
+          <div className={classes.content}>
+            <Title className={classes.title}>
+              O <span className={classes.highlight}>maior</span> Agregador<br /> de NFTs focado em artistas
+            </Title>
+            <Text color="dimmed" mt="md">
+              Com as artes digitais que voce ja tem hoje, voce sabia que ja pode criar NFTs!?
+            </Text>
+            <List
+              mt={30}
+              spacing="sm"
+              size="sm"
+              icon={
+                <ThemeIcon size={20} radius="xl">
+                  <IconCheck size={12} stroke={1.5} />
+                </ThemeIcon>
+              }
+            >
+              <List.Item>
+                <b>TypeScript based</b> – build type safe applications, all components and hooks
+                export types
+              </List.Item>
+              <List.Item>
+                <b>Free and open source</b> – all packages have MIT license, you can use Mantine in
+                any project
+              </List.Item>
+              <List.Item>
+                <b>No annoying focus ring</b> – focus ring will appear only when user navigates with
+                keyboard
+              </List.Item>
+            </List>
+
+            <Group mt={30}>
+              <Button radius="xl" size="md" className={classes.control} onClick={() => navigate(window.location.pathname + '/create')}>
+                Criar NFT
+              </Button>
+              <Button variant="default" radius="xl" size="md" className={classes.control}>
+                Source code
+              </Button>
+            </Group>
+          </div>
+          <Image src={"https://raw.githubusercontent.com/mantinedev/ui.mantine.dev/9d41159486b6d22452ba3a21ee23d9463c289232/components/HeroBullets/image.svg"} className={classes.image} />
+        </div>
       </Container>
       <Container>
-
         <TableComponent data={[
           {
             id: "abc",
@@ -123,7 +143,6 @@ export default function Home() {
             totalNfts: '200k'
           },
         ]} />
-
       </Container>
     </div>
   );
