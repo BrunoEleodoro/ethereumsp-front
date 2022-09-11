@@ -102,7 +102,7 @@ export default function HeroBullets() {
             </List>
 
             <Group mt={30}>
-              <Button radius="xl" size="md" className={classes.control} onClick={() => navigate(window.location.pathname + '/create')}>
+              <Button radius="xl" size="md" className={classes.control} onClick={() => navigate(window.location.pathname + 'create')}>
                 Criar NFT
               </Button>
               <Button variant="default" radius="xl" size="md" className={classes.control}>
