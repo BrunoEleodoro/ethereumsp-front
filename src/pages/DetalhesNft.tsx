@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, createStyles, Select, Textarea, TextInput } from '@mantine/core';
+import { Button, createStyles, NativeSelect, Select, Textarea, TextInput } from '@mantine/core';
 import { CreateNftContext } from '../contexts/CreateNftContext';
 import { NftsContext } from '../contexts/NftsContext';
 import { useEthers } from '@usedapp/core';
@@ -39,6 +39,26 @@ export default function DetalhesNft() {
       <TextInput style={{ width: '100%' }} label="Titulo da NFT" placeholder="" classNames={classes} onChange={(e) => setName(e.target.value)} />
       <br />
       <Textarea style={{ width: '100%' }} label="Descrição da NFT" placeholder="" classNames={classes} onChange={(e) => setDescription(e.target.value)} />
+      <br />
+      <TextInput
+        type="number"
+        placeholder="1000"
+        label="Valor da NFT"
+        rightSection={<NativeSelect
+          data={[
+            { value: 'usd', label: '🇺🇸 USD' },
+            { value: 'brl', label: ' 🇧🇷 BRL' },
+          ]}
+          styles={{
+            input: {
+              fontWeight: 500,
+              borderTopLeftRadius: 0,
+              borderBottomLeftRadius: 0,
+            },
+          }}
+        />}
+        rightSectionWidth={92}
+      />
       <br />
       <Button style={{ width: '100%' }} onClick={() => {
         salvarNft(account);

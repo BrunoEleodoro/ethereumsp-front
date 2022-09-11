@@ -3,6 +3,7 @@ import { openSeaEthereumAddress, openSeaPolygonAddress } from "./address";
 import { providerEthereum, providerPolygon } from "./providers";
 import WyvernExchange from '../abis/WyvernExchange.json';
 import Seaport from '../abis/Seaport.json';
+import ERC721 from '../abis/ERC721.json';
 import { ethers } from "ethers";
 
 export const openSeaEthereumContract = new ethers.Contract(

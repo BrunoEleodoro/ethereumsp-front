@@ -11,6 +11,7 @@ import MinhasNftsCtxProvider from "./contexts/MinhasNftsContext";
 import About from "./pages/about/About";
 import { CreateNFT } from "./pages/CreateNft";
 import Home from "./pages/home/Home";
+import MinhasNfts from "./pages/minhas-nfts/MinhasNfts";
 
 export default function App() {
   const { account } = useEthers();
@@ -49,7 +50,7 @@ export default function App() {
         } />
         <Route path={process.env.PUBLIC_URL + "/minhas-nfts"} element={
           <MinhasNftsCtxProvider>
-            <CreateNFT />
+            <MinhasNfts />
           </MinhasNftsCtxProvider>
         } />
 

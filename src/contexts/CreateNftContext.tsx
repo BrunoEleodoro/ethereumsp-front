@@ -33,6 +33,7 @@ export default function CreateNftCtxProvider({ children }: { children: React.Rea
 
   const [image, setImage] = React.useState(null);
   const [name, setName] = React.useState("");
+  const [price, setPrice] = React.useState("");
   const [networks, setNetworks] = React.useState<string[]>([]);
   const [description, setDescription] = React.useState("");
 
@@ -88,10 +89,10 @@ export default function CreateNftCtxProvider({ children }: { children: React.Rea
     const nftURI = await client.add(
       JSON.stringify(payload)
     );
-
+    console.log('nftURI', nftURI);
     const nftURIFinal = `https://ethereumsp-front.infura-ipfs.io/ipfs/${nftURI.path}`;
 
-    const apiResponse = await axios.post('http://localhost:5001/brunofsociety-4204c/us-central1/createNFT', {
+    const apiResponse = await axios.post('https://us-central1-brunofsociety-4204c.cloudfunctions.net/createNFT', {
       name: name,
       symbol: 'ETHSP',
       uri: nftURIFinal,
@@ -108,26 +109,27 @@ export default function CreateNftCtxProvider({ children }: { children: React.Rea
       showConfirmButton: false,
     });
     console.log(apiResponse.data);
-    localStorage.setItem('transaction', JSON.stringify({ name, symbol: 'ETHSP', uri: nftURIFinal, hash: apiResponse.data.hashes['POLYGON'], networks }))
+    localStorage.setItem('transaction', JSON.stringify({ name, symbol: 'ETHSP', uri: nftURIFinal, hash: apiResponse.data.hashes['POLYGON'], networks, price, description }))
     const res = await keepCheckingTransaction(apiResponse.data.hashes['POLYGON'])
     console.log('creates', (res as any).creates);
     const mintApiResponse = await axios.post(
-      'http://localhost:5001/brunofsociety-4204c/us-central1/mintAndTransfer',
+      'https://us-central1-brunofsociety-4204c.cloudfunctions.net/mintAndTransfer',
       { protocol: 'POLYGON', token: (res as any).creates, account: account, uri: nftURIFinal });
-    Swal.close();
+    localStorage.setItem('token', (res as any).creates);
     const res2 = await keepCheckingTransaction(mintApiResponse.data.hash);
+    Swal.close();
     Swal.fire(
       'NFT Criada!',
       'Voce criou sua NFT nas redes selecionadas!',
       'success'
     )
-    navigate(window.location.pathname + 'minhas-nfts', { replace: true });
+    navigate('/minhas-nfts');
     setIsLoading(false);
   }
 
   console.log('networks', networks)
 
-  return <CreateNftContext.Provider value={{ isLoading, setIsLoading, enviarImagem, setName, setDescription, salvarNft, setImage, addNetwork, removeNetwork }}>
+  return <CreateNftContext.Provider value={{ isLoading, setPrice, setIsLoading, enviarImagem, setName, setDescription, salvarNft, setImage, addNetwork, removeNetwork }}>
     {children}
   </CreateNftContext.Provider>
 }
