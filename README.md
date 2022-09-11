@@ -21,11 +21,18 @@ ___
 
 ___
 
-<center><img src="https://raw.githubusercontent.com/BrunoEleodoro/BrunoEleodoro/master/logo.jpeg" width="30%"/></center>
+<p align="center"> 
+<img src="https://raw.githubusercontent.com/BrunoEleodoro/BrunoEleodoro/master/NFT_LOGO_OKPrancheta%203%20co%CC%81pia.png" width="30%"/>
+</p>
+
 
 ## :information_source: Sobre
 
 A falta de conhecimento sobre NFT dificulta a adoção de artistas já atuantes criem suas NFTs e participem do mercado, essa desinformação não se alinha a imagem libertadora da blockchain.
+
+## Preview do projeto:
+
+https://gorgeous-dodol-957484.netlify.app/
 
 ## :rocket: Tecnologias Utilizadas 
 
