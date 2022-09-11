@@ -1,5 +1,6 @@
 import { Container, Grid, SimpleGrid, Skeleton, useMantineTheme } from '@mantine/core';
 import { DropzoneButton } from '../components/Dropzone';
+import { SelectNetwork } from '../components/SelectNetwork';
 import DetalhesNft from './DetalhesNft';
 
 const PRIMARY_COL_HEIGHT = 300;
@@ -10,6 +11,10 @@ export function CreateNFT() {
 
   return (
     <Container my="md">
+      Redes suportadas:
+      <SelectNetwork />
+      <br />
+      <br />
       <SimpleGrid cols={2} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         <Container>
           <DropzoneButton />

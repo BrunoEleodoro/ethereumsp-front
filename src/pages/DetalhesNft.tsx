@@ -3,6 +3,7 @@ import { Button, createStyles, Select, Textarea, TextInput } from '@mantine/core
 import { CreateNftContext } from '../contexts/CreateNftContext';
 import { NftsContext } from '../contexts/NftsContext';
 import { useEthers } from '@usedapp/core';
+import { SelectNetwork } from '../components/SelectNetwork';
 
 const useStyles = createStyles((theme) => ({
   root: {

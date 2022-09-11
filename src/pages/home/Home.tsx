@@ -91,16 +91,13 @@ export default function HeroBullets() {
               }
             >
               <List.Item>
-                <b>TypeScript based</b> – build type safe applications, all components and hooks
-                export types
+                <b>Simples</b> – Para iniciantes e intermediarios.
               </List.Item>
               <List.Item>
-                <b>Free and open source</b> – all packages have MIT license, you can use Mantine in
-                any project
+                <b>Seguro</b> – rede confiavel criptografada
               </List.Item>
               <List.Item>
-                <b>No annoying focus ring</b> – focus ring will appear only when user navigates with
-                keyboard
+                <b>Rapido</b> – com poucos cliques você consegue publicar sua arte
               </List.Item>
             </List>
 
@@ -109,14 +106,14 @@ export default function HeroBullets() {
                 Criar NFT
               </Button>
               <Button variant="default" radius="xl" size="md" className={classes.control}>
-                Source code
+                Saiba mais
               </Button>
             </Group>
           </div>
           <Image src={"https://raw.githubusercontent.com/mantinedev/ui.mantine.dev/9d41159486b6d22452ba3a21ee23d9463c289232/components/HeroBullets/image.svg"} className={classes.image} />
         </div>
       </Container>
-      <Container>
+      {/* <Container>
         <TableComponent data={[
           {
             id: "abc",
@@ -143,7 +140,7 @@ export default function HeroBullets() {
             totalNfts: '200k'
           },
         ]} />
-      </Container>
+      </Container> */}
     </div>
   );
 }

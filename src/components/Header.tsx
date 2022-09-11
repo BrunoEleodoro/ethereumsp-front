@@ -3,6 +3,8 @@ import { createStyles, Header, Container, Group, Burger, Paper, Transition, Butt
 import { useDisclosure } from '@mantine/hooks';
 import { MantineLogo } from '@mantine/ds';
 import { useEthers } from '@usedapp/core';
+import logo from '../assets/logo.jpeg';
+import { useNavigate } from 'react-router-dom';
 
 const HEADER_HEIGHT = 60;
 
@@ -99,11 +101,15 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       {link.label}
     </a>
   ));
-
+  const navigate = useNavigate();
   return (
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
-        <MantineLogo size={28} />
+        {/* <MantineLogo size={28} />*/}
+        <Group onClick={() => navigate(window.location.pathname + '/')}>
+          <img src={logo} width="60" />
+          &nbsp;NFT Art
+        </Group>
         <Group spacing={5} className={classes.links}>
           {/* items */}
         </Group>
