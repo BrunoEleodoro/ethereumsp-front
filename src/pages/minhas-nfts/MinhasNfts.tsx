@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Card, Image, Text, Group, Badge, createStyles, Center, Button, Container } from '@mantine/core';
 import { IconGasStation, IconGauge, IconManualGearbox, IconUsers } from '@tabler/icons';
 import { MinhasNftsContext } from '../../contexts/MinhasNftsContext';
+import { Grid } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -58,39 +59,119 @@ export default function MinhasNfts() {
   ));
 
   return (
-    <Container>
-      <Card withBorder radius="md" className={classes.card} style={{ width: '300px' }}>
-        <Card.Section className={classes.imageSection}>
-          <Image src={image} alt="Imagem nft" />
-        </Card.Section>
-        <Group position="apart" mt="md">
-          <div>
-            <Text weight={500}>{nft?.name}</Text>
-            <Text size="xs" color="dimmed">
-              {nft?.descricao}
-            </Text>
-          </div>
-        </Group>
+    <Grid>
+      <Grid.Col span={3}>
+
+        <Container>
+          <Card withBorder radius="md" className={classes.card} style={{ width: '300px' }}>
+            <Card.Section className={classes.imageSection}>
+              <Image src={image} alt="Imagem nft" />
+            </Card.Section>
+            <Group position="apart" mt="md">
+              <div>
+                <Text weight={500}>{nft?.name}</Text>
+                <Text size="xs" color="dimmed">
+                  {nft?.descricao}
+                </Text>
+              </div>
+            </Group>
 
 
-        <Card.Section className={classes.section}>
-          <Group spacing={30}>
-            <div>
-              <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
-                0.05 ETH
-              </Text>
-              <Text size="sm" color="dimmed" weight={500} sx={{ lineHeight: 1 }} mt={3}>
-              </Text>
-            </div>
+            <Card.Section className={classes.section}>
+              <Group spacing={30}>
+                <div>
+                  <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
+                    0.05 ETH
+                  </Text>
+                  <Text size="sm" color="dimmed" weight={500} sx={{ lineHeight: 1 }} mt={3}>
+                  </Text>
+                </div>
 
-            <Button radius="xl" style={{ flex: 1 }} onClick={() => {
-              window.open('https://mumbai.polygonscan.com/tx/' + nft?.hash, '_blank');
-            }}>
-              Visualizar
-            </Button>
-          </Group>
-        </Card.Section>
-      </Card>
-    </Container>
+                <Button radius="xl" style={{ flex: 1 }} onClick={() => {
+                  window.open('https://mumbai.polygonscan.com/tx/' + nft?.hash, '_blank');
+                }}>
+                  Visualizar
+                </Button>
+              </Group>
+            </Card.Section>
+          </Card>
+        </Container>
+
+      </Grid.Col>
+      <Grid.Col span={3}>
+
+        <Container>
+          <Card withBorder radius="md" className={classes.card} style={{ width: '300px' }}>
+            <Card.Section className={classes.imageSection}>
+              <Image src={"https://ethereumsp-front.infura-ipfs.io/ipfs/QmeEBcZy1AbdVgrLXGzZ2v37fLQ1pbhmGrctYy7BBUjWZi"} alt="Imagem nft" />
+            </Card.Section>
+            <Group position="apart" mt="md">
+              <div>
+                <Text weight={500}>{nft?.name}</Text>
+                <Text size="xs" color="dimmed">
+                  {nft?.descricao}
+                </Text>
+              </div>
+            </Group>
+
+
+            <Card.Section className={classes.section}>
+              <Group spacing={30}>
+                <div>
+                  <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
+                    0.05 ETH
+                  </Text>
+                  <Text size="sm" color="dimmed" weight={500} sx={{ lineHeight: 1 }} mt={3}>
+                  </Text>
+                </div>
+
+                <Button radius="xl" style={{ flex: 1 }} onClick={() => {
+                  window.open('https://mumbai.polygonscan.com/tx/' + nft?.hash, '_blank');
+                }}>
+                  Visualizar
+                </Button>
+              </Group>
+            </Card.Section>
+          </Card>
+        </Container>
+      </Grid.Col>
+      <Grid.Col span={3}>
+
+        <Container>
+          <Card withBorder radius="md" className={classes.card} style={{ width: '300px' }}>
+            <Card.Section className={classes.imageSection}>
+              <Image src={"https://ethereumsp-front.infura-ipfs.io/ipfs/QmV64V2i71HJDLnzaRawyG7LbzCVdEHhNjxCNX5t2XruVp"} alt="Imagem nft" />
+            </Card.Section>
+            <Group position="apart" mt="md">
+              <div>
+                <Text weight={500}>{nft?.name}</Text>
+                <Text size="xs" color="dimmed">
+                  {nft?.descricao}
+                </Text>
+              </div>
+            </Group>
+
+
+            <Card.Section className={classes.section}>
+              <Group spacing={30}>
+                <div>
+                  <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
+                    0.05 ETH
+                  </Text>
+                  <Text size="sm" color="dimmed" weight={500} sx={{ lineHeight: 1 }} mt={3}>
+                  </Text>
+                </div>
+
+                <Button radius="xl" style={{ flex: 1 }} onClick={() => {
+                  window.open('https://mumbai.polygonscan.com/tx/' + nft?.hash, '_blank');
+                }}>
+                  Visualizar
+                </Button>
+              </Group>
+            </Card.Section>
+          </Card>
+        </Container>
+      </Grid.Col>
+    </Grid>
   );
 }

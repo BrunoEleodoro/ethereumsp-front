@@ -2,7 +2,6 @@
   "name": "ethereumsp-front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://brunoeleodoro.com/ethereumsp-front",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@mantine/core": "^5.3.0",
@@ -33,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && mv build docs",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

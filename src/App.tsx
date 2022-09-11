@@ -41,14 +41,14 @@ export default function App() {
         }]} />
       </div>
       <Routes>
-        <Route path={process.env.PUBLIC_URL + "/"} element={<Home />} />
-        <Route path={process.env.PUBLIC_URL + "/about"} element={<About />} />
-        <Route path={process.env.PUBLIC_URL + "/create"} element={
+        <Route path={"/"} element={<Home />} />
+        <Route path={"/about"} element={<About />} />
+        <Route path={"/create"} element={
           <CreateNftCtxProvider>
             <CreateNFT />
           </CreateNftCtxProvider>
         } />
-        <Route path={process.env.PUBLIC_URL + "/minhas-nfts"} element={
+        <Route path={"/minhas-nfts"} element={
           <MinhasNftsCtxProvider>
             <MinhasNfts />
           </MinhasNftsCtxProvider>
