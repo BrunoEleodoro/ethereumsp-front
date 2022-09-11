@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { HeaderResponsive } from "./components/Header";
 import CreateNftCtxProvider from "./contexts/CreateNftContext";
+import MinhasNftsCtxProvider from "./contexts/MinhasNftsContext";
 import About from "./pages/about/About";
 import { CreateNFT } from "./pages/CreateNft";
 import Home from "./pages/home/Home";
@@ -31,11 +32,11 @@ export default function App() {
           },
           {
             link: '/about',
-            label: 'About'
+            label: 'Sobre'
           },
         ] : [{
           link: '/about',
-          label: 'About'
+          label: 'Sobre'
         }]} />
       </div>
       <Routes>
@@ -46,6 +47,12 @@ export default function App() {
             <CreateNFT />
           </CreateNftCtxProvider>
         } />
+        <Route path={process.env.PUBLIC_URL + "/minhas-nfts"} element={
+          <MinhasNftsCtxProvider>
+            <CreateNFT />
+          </MinhasNftsCtxProvider>
+        } />
+
       </Routes>
     </BrowserRouter>
   );

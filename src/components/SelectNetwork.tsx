@@ -1,5 +1,7 @@
+import * as React from 'react';
 import { UnstyledButton, Checkbox, Text, Image, SimpleGrid, createStyles } from '@mantine/core';
 import { useUncontrolled } from '@mantine/hooks';
+import CreateNftCtxProvider, { CreateNftContext } from '../contexts/CreateNftContext';
 
 const useStyles = createStyles((theme, { checked }: { checked: boolean }) => ({
   button: {
@@ -29,6 +31,9 @@ const useStyles = createStyles((theme, { checked }: { checked: boolean }) => ({
 }));
 
 interface ImageCheckboxProps {
+  addNetwork: any;
+  removeNetwork: any;
+  networkKey: string;
   checked?: boolean;
   defaultChecked?: boolean;
   onChange?(checked: boolean): void;
@@ -38,6 +43,9 @@ interface ImageCheckboxProps {
 }
 
 export function ImageCheckbox({
+  addNetwork,
+  removeNetwork,
+  networkKey,
   checked,
   defaultChecked,
   onChange,
@@ -59,7 +67,15 @@ export function ImageCheckbox({
   return (
     <UnstyledButton
       {...others}
-      onClick={() => handleChange(!value)}
+      onClick={() => {
+        handleChange(!value)
+        console.log('valeu', value);
+        if (!value) {
+          addNetwork(networkKey);
+        } else {
+          removeNetwork(networkKey);
+        }
+      }}
       className={cx(classes.button, className)}
     >
       <Image src={image} alt={title} width={40} />
@@ -75,7 +91,8 @@ export function ImageCheckbox({
 
       <Checkbox
         checked={value}
-        onChange={() => { }}
+        onChange={() => {
+        }}
         tabIndex={-1}
         styles={{ input: { cursor: 'pointer' } }}
       />
@@ -85,13 +102,14 @@ export function ImageCheckbox({
 
 
 export function SelectNetwork() {
+  const { addNetwork, removeNetwork } = React.useContext(CreateNftContext);
   const mockdata = [
-    { description: '', title: 'Ethereum', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxKBw07LvvHXxN55zwki8xKUX9fSVI08PBeC1gwlgRlA&s' },
-    { description: '', title: 'Binance Smart Chain', image: 'https://assets-cdn.trustwallet.com/blockchains/smartchain/info/logo.png' },
-    { description: '', title: 'Polygon', image: 'https://www.freelogovectors.net/svg10/polygon-token-logo-freelogovectors.net_.svg' },
-    { description: '', title: 'Avalanche', image: 'https://upload.wikimedia.org/wikipedia/en/0/03/Avalanche_logo_without_text.png' },
+    { description: '', networkKey: "ETHEREUM", title: 'Ethereum', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxKBw07LvvHXxN55zwki8xKUX9fSVI08PBeC1gwlgRlA&s' },
+    { description: '', networkKey: "BSC", title: 'Binance Smart Chain', image: 'https://assets-cdn.trustwallet.com/blockchains/smartchain/info/logo.png' },
+    { description: '', networkKey: "POLYGON", title: 'Polygon', image: 'https://www.freelogovectors.net/svg10/polygon-token-logo-freelogovectors.net_.svg' },
+    { description: '', networkKey: "AVAXCCHAIN", title: 'Avalanche', image: 'https://upload.wikimedia.org/wikipedia/en/0/03/Avalanche_logo_without_text.png' },
   ];
-  const items = mockdata.map((item) => <ImageCheckbox {...item} key={item.title} />);
+  const items = mockdata.map((item) => <ImageCheckbox {...item} key={item.title} addNetwork={addNetwork} removeNetwork={removeNetwork} />);
   return (
     <SimpleGrid
       cols={4}

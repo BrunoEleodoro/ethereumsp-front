@@ -41,8 +41,8 @@ export default function DetalhesNft() {
       <Textarea style={{ width: '100%' }} label="Descrição da NFT" placeholder="" classNames={classes} onChange={(e) => setDescription(e.target.value)} />
       <br />
       <Button style={{ width: '100%' }} onClick={() => {
-        salvarNft();
-      }} loading={isLoading}>
+        salvarNft(account);
+      }}>
         CRIAR NFT
       </Button>
     </div>
